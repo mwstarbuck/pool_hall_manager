@@ -31,4 +31,4 @@ class Table:
             self.occupied = False
             self.end_time = datetime.now()
             self.time_played = self.end_time - self.start_time
-            self.start_time = ""
+            #self.start_time = ""

@@ -54,6 +54,7 @@ class TableManager():
             try:
                 if user_input == "1":
                     choice = int(input("Enter table number to CHECKOUT: ")) - 1
+
                 else:
                     choice = int(input("Enter table number to CHECKIN: ")) - 1
                 # for i in range(0, len(tables)):
@@ -80,11 +81,22 @@ class TableManager():
                 f"Table {table.number} has been checked out at: {table.start_time}")
         elif user_input == "2":
             self.show_tables()
-            table = self.choose_table(user_input)
-            table.checkin()
-            entry = activity_log.create_entry(
-                table.number, table.start_time, table.end_time, table.time_played)
-            activity_log.log_entry(entry)
+            # check for all availability
+            all_available = True
+            for table in tables:
+                if table.occupied == True:
+                    all_available = False
+            if all_available == True:
+                input("*** All Tables are empty. Choose another menu option. *** ")
+                # self.show_menu()
+                # break
+            else:
+                table = self.choose_table(user_input)
+                table.checkin()
+                entry = activity_log.create_entry(
+                    table.number, table.start_time,         table.end_time, table.time_played)
+                activity_log.log_entry(entry)
+                table.start_time = ""
             self.show_tables()
         elif user_input == "3":
             self.show_tables()
