@@ -23,7 +23,7 @@ class TableManager():
         print(f"-------U of H Pool Hall--------")
         print(f" \t   {self.date}\n")
         print("CHECKOUT TABLE: Enter 1: ")
-        print("CHECKIN TABLE: Enter 2: ")
+        print("CLOSE TABLE: Enter 2: ")
         print("VIEW ALL TABLES: enter 3: ")
         print("To QUIT the app, enter 'q': ")
         self.print_lines()
@@ -61,7 +61,7 @@ class TableManager():
                     choice = int(input("Enter table number to CHECKOUT: ")) - 1
 
                 else:
-                    choice = int(input("Enter table number to CHECKIN: ")) - 1
+                    choice = int(input("Enter table number to CLOSE: ")) - 1
                 # for i in range(0, len(tables)):
                 #     table = tables[i]
                 #     if i == choice:

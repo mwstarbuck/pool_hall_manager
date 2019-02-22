@@ -1,6 +1,6 @@
 class Formatter():
     def __init__(self):
-        pass
+        self.clock = ""
 
     def timer_format(self, end, start):
         delta_time = end - start
@@ -16,11 +16,11 @@ class Formatter():
         minute = time.minute
         if minute < 10:
             minute = f"0{minute}"
-            clock = "AM"
+            self.clock = "AM"
         if hour > 12:
             hour -= 12
-            clock = "PM"
-        pretty_time = f"{hour}:{minute}{clock}"
+            self.clock = "PM"
+        pretty_time = f"{hour}:{minute} {self.clock}"
         return pretty_time
 
     def cost_calc(self, end, start):
