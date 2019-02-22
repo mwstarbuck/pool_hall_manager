@@ -18,7 +18,7 @@ class TableManager():
     def show_menu(self):
             # show_menu
         print("")
-        print(f"-------U of H Pool Hall-----------")
+        print(f"-------U of H Pool Hall--------")
         print(f" \t   {self.date}\n")
         print("CHECKOUT TABLE: Enter 1: ")
         print("CHECKIN TABLE: Enter 2: ")
@@ -32,7 +32,8 @@ class TableManager():
     def show_tables(self):
         current_time = datetime.now()
         print("")
-        print("*** U of H Pool Hall ***")
+        print("-------U of H Pool Hall-------")
+        print("         TABLE LIST")
         self.print_lines()
         for table in tables:
             if table.occupied == True:
@@ -41,12 +42,14 @@ class TableManager():
                 status = "Available"
              #pretty_date = table.date_formating(table.start_time)
             if table.start_time != "":
-                pretty_date = table.date_formating(table.start_time)
+                pretty_clock = table.clock_format(table.start_time,)
+                elapsed_time = table.timer_format(
+                    current_time, table.start_time)
                 print(
-                    f"Table - {table.number}- {status} -   {pretty_date} elaspsed time = {current_time - table.start_time}")
+                    f"Table-{table.number} - {status} -  Start: {pretty_clock} - Play time: {elapsed_time}")
             else:
                 print(
-                    f"Table - {table.number}- {status}")
+                    f"Table-{table.number} - {status}")
         self.print_lines()
 
     def choose_table(self, user_input):
