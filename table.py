@@ -1,6 +1,8 @@
 from datetime import datetime
 time = datetime.now()
 
+# table class
+
 
 class Table:
     def __init__(self, number):
@@ -10,6 +12,8 @@ class Table:
         self.end_time = ""
         self.time_played = ""
         self.current_time = ""
+
+    # function changes attributes for checked out status
 
     def checkout(self):
         if self.occupied == True:
@@ -21,6 +25,8 @@ class Table:
             self.start_time = datetime.now()
             self.end_time = datetime.now()
             self.time_played = self.end_time - self.start_time
+
+    # changes attributes to a closed out state and calculates delta time
 
     def checkin(self):
         if self.occupied == False:

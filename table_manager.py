@@ -5,6 +5,8 @@ from time import time
 from activity_log import ActivityLog
 day = datetime.now()
 
+# table manager control center for all pool hall/app functions
+
 
 class TableManager():
     def __init__(self, day):
@@ -16,6 +18,7 @@ class TableManager():
         print("")
         print("-----------------------------------")
         print("")
+    # Main app menu
 
     def show_menu(self):
             # show_menu
@@ -29,9 +32,7 @@ class TableManager():
         print("To QUIT the app, enter 'q': ")
         self.print_lines()
 
-    def create_tables(self):
-        pass
-
+    # function shows a list of all tables with current status
     def show_tables(self):
         current_time = datetime.now()
         print("")
@@ -43,7 +44,6 @@ class TableManager():
                 status = "Occupied"
             else:
                 status = "Available"
-             # pretty_date = table.date_formating(table.start_time)
             if table.start_time != "":
                 pretty_clock = formatter.clock_format(table.start_time,)
                 elapsed_time = formatter.timer_format(
@@ -54,6 +54,7 @@ class TableManager():
                 print(
                     f"Table-{table.number} - {status}")
         self.print_lines()
+    # function handles main menu choice and returns table choice to chooser() function
 
     def choose_table(self, user_input):
         while True:
@@ -76,8 +77,8 @@ class TableManager():
             except:
                 print(
                     "*** Did you spill coffee on you me? ***\n\n\nPress RETURN to continue: ")
-            # self.show_menu()
 
+    # function to re-assign attributes to table obj. from a json data recovery file
     def repopulate_data(self, json_data):
         recovery_time = datetime.now()
         for i in range(len(json_data)):
@@ -91,9 +92,7 @@ class TableManager():
                         temp_table["Start Time"], "%Y-%m-%d %H:%M:%S.%f")
                     table.end_time = recovery_time
 
-                    #self.time_played = temp_table["Total Time  Played"]
-                    #self.current_time = ""
-
+    # method handles all choices from main menu.  -- needs cleaning up
     def chooser(self, user_input):
         if user_input == "1":
             print("")
@@ -143,6 +142,9 @@ class TableManager():
                         activity_log.log_entry(entry)
                         table.start_time = ""
                         self.show_tables()
+                        print(
+                            f"Table {table.number} has been closed out at: {formatter.clock_format(table.end_time)}")
+
             else:
                 print("")
                 print("*** You did not enter a valid response.  Try again champ. ***")
@@ -164,15 +166,15 @@ class TableManager():
                 print("")
                 print("*** You did not enter a valid response.  Try again champ. ***")
 
-        # def log_activity(self):
-    #     with
-################ FOR MAIN ############
+################ running of the app below ############
 
 
+# creating instances of  classes to run app
 formatter = Formatter()
 manager = TableManager(day)
 activity_log = ActivityLog(manager.date)
 
+# creating list and filling  it with table objects
 tables = []
 for i in range(1, 13):
     table = Table(i)
@@ -181,6 +183,7 @@ for i in range(1, 13):
     # print(f"Table - {table.name}- {table.occupied}")
     # print(manager.day)
 
+# while loop that keeps app in a running state until user quits with 'q'
 user_input = ""
 while user_input != "q":
     manager.show_menu()

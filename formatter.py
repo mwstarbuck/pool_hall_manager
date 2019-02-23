@@ -1,7 +1,11 @@
+# class handles all the date and time formatting for easier reading
+
+
 class Formatter():
     def __init__(self):
         self.clock = ""
 
+    # displays play time in hrs and minutes
     def timer_format(self, end, start):
         delta_time = end - start
         delta_sec = delta_time.total_seconds()
@@ -11,6 +15,7 @@ class Formatter():
         pretty_timer = f"{hours} hrs : {minutes} min"
         return pretty_timer
 
+    # displays start time in typical digital clock format
     def clock_format(self, time):
         hour = time.hour
         minute = time.minute
@@ -22,6 +27,8 @@ class Formatter():
             self.clock = "PM"
         pretty_time = f"{hour}:{minute} {self.clock}"
         return pretty_time
+
+    # calculates cost from play time and displays in typical format
 
     def cost_calc(self, end, start):
         delta_time = end - start
@@ -37,9 +44,12 @@ class Formatter():
     #     pretty_timer = f"{hour}:{minute}"
     #     return pretty_timer
 
+    # formats date with clock for easier reading
     def date_format(self, date_obj):
         pretty_date_time = f"{date_obj.month}-{date_obj.day}-{date_obj.year} {self.clock_format(date_obj)}"
         return pretty_date_time
+
+    # displays date only
 
     def date_only(self, date_obj):
         pretty_date = f"{date_obj.month}-{date_obj.day}-{date_obj.year}"
