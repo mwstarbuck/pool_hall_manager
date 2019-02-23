@@ -1,9 +1,23 @@
 [
   {
     "Table Number": 1,
-    "Start Time": "2-22-2019 1:41 PM",
-    "End Time": "2-22-2019 1:42 PM",
-    "Total Time Played": "0 hrs : 0 min",
-    "Cost": "$0.00"
+    "Start Time": "2-22-2019 11:48 PM",
+    "End Time": "2-22-2019 11:49 PM",
+    "Total Time Played": "0 hrs : 1 min",
+    "Cost": "$0.50"
+  },
+  {
+    "Table Number": 1,
+    "Start Time": "2-22-2019 11:48 PM",
+    "End Time": "2-22-2019 11:49 PM",
+    "Total Time Played": "0 hrs : 2 min",
+    "Cost": "$1.00"
+  },
+  {
+    "Table Number": 2,
+    "Start Time": "2-22-2019 11:48 PM",
+    "End Time": "2-22-2019 11:50 PM",
+    "Total Time Played": "0 hrs : 1 min",
+    "Cost": "$0.50"
   }
 ]
